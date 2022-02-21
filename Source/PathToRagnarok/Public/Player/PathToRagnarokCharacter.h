@@ -7,6 +7,7 @@
 class UCameraComponent;
 class USpringArmComponent;
 class UDecalComponent;
+class UInventoryComponent;
 
 UCLASS()
 class APathToRagnarokCharacter : public ACharacter
@@ -14,20 +15,23 @@ class APathToRagnarokCharacter : public ACharacter
 	GENERATED_BODY()
 
 private:
-	UPROPERTY(VisibleAnywhere, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* CameraBoom;
 
-	UPROPERTY(VisibleAnywhere, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* CameraComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Inventory", meta = (AllowPrivateAccess = "true"))
+	UInventoryComponent* InventoryComponent;
 
 public:
 	APathToRagnarokCharacter();
 
-	UFUNCTION(BlueprintPure, Category = "Character")
-	FORCEINLINE UCameraComponent* GetCameraComponent() const { return CameraComponent; }
+	FORCEINLINE UCameraComponent* GetCamera() const { return CameraComponent; }
 
-	UFUNCTION(BlueprintPure, Category = "Character")
 	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	FORCEINLINE UInventoryComponent* GetInventory() const { return InventoryComponent; };
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 

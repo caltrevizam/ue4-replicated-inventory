@@ -7,8 +7,4 @@
 APathToRagnarokGameMode::APathToRagnarokGameMode()
 {
 	PlayerControllerClass = APathToRagnarokPlayerController::StaticClass();
-
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/Blueprints/TopDownCharacter"));
-	if (PlayerPawnBPClass.Class != nullptr)
-		DefaultPawnClass = PlayerPawnBPClass.Class;
 }

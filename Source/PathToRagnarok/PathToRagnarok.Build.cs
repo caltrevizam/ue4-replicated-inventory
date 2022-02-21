@@ -17,6 +17,7 @@ public class PathToRagnarok : ModuleRules
             "Slate",
             "NavigationSystem",
             "AIModule",
+            "ItemsSystem"
         });
     }
 }
